@@ -6,6 +6,7 @@ for (let i = 0; i < posts.length; i++) {
 
     let post = posts[i];
     let postDiv = document.createElement('div');
+
     //
     function showPropsPost(obj) {
 
@@ -33,6 +34,33 @@ for (let i = 0; i < posts.length; i++) {
     }
 
     showPropsPost(posts);
+    let comments = document.createElement('div');
+    comments.innerText = 'comments:';
+    postDiv.appendChild(comments);
 
-    document.body.appendChild(postDiv);
-}
+
+        fetch('https://jsonplaceholder.typicode.com/post/' + post.id + '/comments')
+            .then(response => response.json())
+            .then(comments => comments.forEach(comment => {
+
+                let postDiv = document.createElement('div');
+
+                let commentsArray = JSON.parse(localStorage.getItem('comments')) || [];
+
+                commentsArray.push(comment);
+                console.log(commentsArray);
+
+                localStorage.setItem('posts', JSON.stringify(commentsArray));
+
+
+                showPropsPost(commentsArray);
+
+
+                document.body.appendChild(postDiv);
+
+            }));
+    };
+
+
+
+

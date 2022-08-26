@@ -16,15 +16,27 @@ for (let i = 0; i < users.length; i++) {
 
             if (obj[i].toString() !== '[object Object]') {
 
-                let keyDiv = document.createElement('div');
-                keyDiv.innerText = i + ": " + obj[i];
-                userDiv.appendChild(keyDiv);
+                let div = document.createElement('div');
+                div.style.border = '2px solid darkBlue';
+                div.style.width = '300px';
+
+
+                let h2 = document.createElement('h2');
+                div.appendChild(h2);
+                h2.innerText = i + ": " + obj[i];
+
+
+                userDiv.appendChild(div);
 
             } else {
 
-                let key2Div = document.createElement('div');
-                key2Div.innerText = i + ":";
-                userDiv.appendChild(key2Div);
+                let div2 = document.createElement('div');
+                div2.style.border = '2px solid darkBlue';
+                div2.style.width = '300px';
+                let h2Else = document.createElement('h2');
+                h2Else.innerText = i + ":";
+                div2.appendChild(h2Else);
+                userDiv.appendChild(div2);
 
                 let arr = obj[i];
 
@@ -37,18 +49,28 @@ for (let i = 0; i < users.length; i++) {
 
     showProps(user);
 
+    let buttonDiv = document.createElement('div');
+    buttonDiv.style.display = 'flex';
 
-    let postOfCurrentUser = document.createElement('button');
-    postOfCurrentUser.innerText = "post of current user";
 
-    postOfCurrentUser.onclick = function () {
+
+    let button = document.createElement('button');
+    button.style.width = '90%';
+    button.style.alignItems = 'center';
+    button.style.margin = 'auto';
+
+    let h3 = document.createElement('h3');
+    button.appendChild(h3);
+    h3.innerText = "post of current user";
+
+    button.onclick = function () {
 
         fetch('https://jsonplaceholder.typicode.com/users/' + user.id + '/posts')
             .then(response => response.json())
-            .then(titles => titles.forEach(title => {
+            .then(posts => posts.forEach(post => {
 
-                let titleDiv = document.createElement('div');
-                titleDiv.innerText = title.id + ': ' + title.title;
+                let postDiv = document.createElement('div');
+                postDiv.innerText = post.id + ': ' + post.title;
 
                 let postOfCurrentTitle = document.createElement('button');
                 postOfCurrentTitle.innerText = "current post";
@@ -58,28 +80,18 @@ for (let i = 0; i < users.length; i++) {
                         location.href = "post-details.html";
                         let postsArray = JSON.parse(localStorage.getItem('posts')) || [];
 
-                        postsArray.push(title);
+                        postsArray.push(post);
                         localStorage.setItem('posts', JSON.stringify(postsArray));
 
                 };
 
                 localStorage.clear();
-                titleDiv.appendChild(postOfCurrentTitle);
-                document.body.appendChild(titleDiv);
+                postDiv.appendChild(postOfCurrentTitle);
+                document.body.appendChild(postDiv);
 
             }));
 
         };
-
-    document.body.appendChild(postOfCurrentUser);
-
+    buttonDiv.appendChild(button);
+    document.body.appendChild(buttonDiv);
 }
-
-
-// На странице user-details.html:
-
-// 5 Додати кнопку "post of current user", при кліку на яку, з'являються title всіх постів поточного юзера
-// (для получения постов используйте эндпоинт https://jsonplaceholder.typicode.com/users/USER_ID/posts)
-//     6 Каждому посту додати кнопку/посилання, при кліку на яку відбувається перехід на сторінку post-details.html, котра має детальну інфу про поточний пост.
-
-
