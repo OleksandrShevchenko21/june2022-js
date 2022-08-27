@@ -27,31 +27,12 @@ fetch('https://jsonplaceholder.typicode.com/users')
     .then(response => response.json())
     .then(users => users.forEach(user => {
 
-
-
         let div = document.createElement('div');
-
-        div.style.border = '2px solid darkBlue';
-        div.style.width = '300px';
-        div.style.display = 'flex';
-        div.style.margin = 'auto';
-        div.style.flexDirection = 'column';
-        div.style.flexWrap = 'wrap';
-        // div.style.background = 'blue';
-
         let h2 = document.createElement('h2');
-        h2.style.alignItems = 'center';
-        h2.style.margin = 'auto';
-
         h2.innerText =user.id + ': '+ user.name;
 
 
         let button = document.createElement('button');
-        button.style.width = '200px';
-        button.style.alignItems = 'center';
-        button.style.margin = 'auto';
-        button.style.background = 'yellow';
-
         let h3 = document.createElement('h3');
         button.appendChild(h3);
 
@@ -61,20 +42,34 @@ fetch('https://jsonplaceholder.typicode.com/users')
             let array = JSON.parse(localStorage.getItem('users')) || [];
             array.push(user);
             localStorage.setItem('users', JSON.stringify(array));
-
-
-
-
         };
 
         localStorage.clear();
         document.body.appendChild(div);
         div.appendChild(h2);
         div.appendChild(button);
-document.body.style.display = 'flex';
-document.body.style.flexDirection = 'column';
-document.body.style.flexWrap = 'wrap';
-document.body.style.height = '200px';
-    }));
 
-// console.log(JSON.parse(localStorage.getItem('users')));
+
+            div.style.border = '2px solid darkBlue';
+            div.style.borderRadius = '10px';
+            div.style.width = '310px';
+            div.style.display = 'flex';
+            div.style.margin = '10px';
+            div.style.flexDirection = 'column';
+            div.style.background = 'cyan';
+
+            button.style.background = 'yellow';
+            button.style.border = '2px solid darkBlue';
+            button.style.borderRadius = '10px';
+
+            h2.style.alignItems = 'center';
+            h2.style.margin = 'auto';
+            h2.style.padding = '10px';
+
+
+        document.body.style.margin = 'auto';
+        document.body.style.width = '900px';
+        document.body.style.display = 'flex';
+         document.body.style.flexWrap = 'wrap';
+
+    }));
