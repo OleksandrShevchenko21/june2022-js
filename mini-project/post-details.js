@@ -5,9 +5,6 @@ let mainDiv = document.createElement('div');
 
 let mainCommentDiv = document.createElement('div');
 
-
-
-
 function showPropsPost(obj) {
         let postDiv = document.createElement('div');
         postDiv.style.margin = '10px';
@@ -21,7 +18,6 @@ function showPropsPost(obj) {
                 text.innerText = i + ": " + obj[i];
                 postDiv.appendChild(text);
                 mainDiv.appendChild(postDiv);
-
 
             } else {
 
@@ -48,7 +44,6 @@ function showPropsComment(obj) {
             let text = document.createElement('h3');
 
             text.style.width = '200px';
-
             text.style.borderRadius = '10px';
             text.style.padding = '10px';
 
@@ -75,7 +70,6 @@ for (let i = 0; i < posts.length; i++) {
             .then(response => response.json())
             .then(comments => comments.forEach(comment => {
 
-
                 let commentsArray = JSON.parse(localStorage.getItem('comments')) || [];
 
                 commentsArray.push(comment);
@@ -86,11 +80,8 @@ for (let i = 0; i < posts.length; i++) {
 
                 showPropsComment(commentsArray);
 
-
             }));
     }
-    // document.body.appendChild(commentDiv);
-
 
 document.body.appendChild(mainDiv);
 document.body.appendChild(mainCommentDiv);

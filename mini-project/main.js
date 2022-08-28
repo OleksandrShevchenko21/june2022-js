@@ -70,6 +70,6 @@ fetch('https://jsonplaceholder.typicode.com/users')
         document.body.style.margin = 'auto';
         document.body.style.width = '900px';
         document.body.style.display = 'flex';
-         document.body.style.flexWrap = 'wrap';
+        document.body.style.flexWrap = 'wrap';
 
     }));

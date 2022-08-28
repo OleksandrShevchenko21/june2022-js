@@ -24,19 +24,35 @@ for (let i = 0; i < users.length; i++) {
 
                 h2.style.alignItems = 'center';
                 h2.style.margin = 'auto';
-                h2.style.padding = '10px';
+                h2.style.paddingLeft = '10px';
 
-                div.style.border = '2px solid darkBlue';
-                div.style.borderRadius = '10px';
-                div.style.margin = '10px';
+                div.style.margin = '2px';
                 div.style.background = 'cyan';
-                div.style.width = '310px';
+                div.style.borderRadius = '10px';
+                div.style.width = '400px';
             } else {
+                let divElse = document.createElement('div');
+                let h2Else = document.createElement('h2');
+                h2Else.innerText = i + ": ";
+                divElse.appendChild(h2Else);
 
                 let arr = obj[i];
 
+                userDiv.appendChild(divElse);
+
                 document.body.appendChild(userDiv);
                 showProps(arr);
+
+                h2Else.style.alignItems = 'center';
+                h2Else.style.margin = 'auto';
+                h2Else.style.paddingLeft = '10px';
+
+                divElse.style.margin = '2px';
+                divElse.style.background = 'cyan';
+                divElse.style.width = '400px';
+                divElse.style.background = 'cyan';
+                divElse.style.borderRadius = '10px';
+
 
             }
         }
@@ -64,10 +80,10 @@ for (let i = 0; i < users.length; i++) {
                 postDiv.appendChild(postDivText);
                 postDivText.innerText = post.id + ': ' + post.title;
 
-                let currentPost = document.createElement('button');
+                let buttonCurrentPost = document.createElement('button');
                 let currentPostText = document.createElement('h4');
-                currentPost.appendChild(currentPostText);
-                currentPost.onclick = function () {
+                buttonCurrentPost.appendChild(currentPostText);
+                buttonCurrentPost.onclick = function () {
 
                         location.href = "post-details.html";
                         let postsArray = JSON.parse(localStorage.getItem('posts')) || [];
@@ -78,7 +94,7 @@ for (let i = 0; i < users.length; i++) {
                 };
 
                 localStorage.clear();
-                postDiv.appendChild(currentPost);
+                postDiv.appendChild(buttonCurrentPost);
                 mainPostDiv.appendChild(postDiv);
                 document.body.appendChild(mainPostDiv);
 
@@ -92,11 +108,11 @@ for (let i = 0; i < users.length; i++) {
                 postDivText.style.margin = '10px';
                 postDivText.style.width = '150px';
 
-                currentPost.style.display = 'flex';
-                currentPost.style.width = '150px';
-                currentPost.style.border = '2px solid darkBlue';
-                currentPost.style.borderRadius = '10px';
-                currentPost.style.background = 'yellow';
+                buttonCurrentPost.style.display = 'flex';
+                buttonCurrentPost.style.width = '150px';
+                buttonCurrentPost.style.border = '2px solid darkBlue';
+                buttonCurrentPost.style.borderRadius = '10px';
+                buttonCurrentPost.style.background = 'yellow';
 
                 currentPostText.innerText = "current post";
                 currentPostText.style.margin = 'auto';
@@ -117,15 +133,14 @@ for (let i = 0; i < users.length; i++) {
     buttonDiv.appendChild(button);
     document.body.appendChild(buttonDiv);
 
-
-
     userDiv.style.border = '2px solid darkBlue';
     userDiv.style.borderRadius = '10px';
-    userDiv.style.width = '90%';
+    // userDiv.style.width = '90%';
+    userDiv.style.height = '600px';
     userDiv.style.display = 'flex';
+    userDiv.style.flexDirection = 'column';
     userDiv.style.margin = '10px';
     userDiv.style.flexWrap = 'wrap';
-    userDiv.style.justifyContent = 'center';
     userDiv.style.background = 'darkred';
 
     button.style.margin = 'auto';
