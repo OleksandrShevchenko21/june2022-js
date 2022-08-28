@@ -52,8 +52,6 @@ for (let i = 0; i < users.length; i++) {
                 divElse.style.width = '400px';
                 divElse.style.background = 'cyan';
                 divElse.style.borderRadius = '10px';
-
-
             }
         }
     }
@@ -136,7 +134,7 @@ for (let i = 0; i < users.length; i++) {
     userDiv.style.border = '2px solid darkBlue';
     userDiv.style.borderRadius = '10px';
     // userDiv.style.width = '90%';
-    userDiv.style.height = '600px';
+    // userDiv.style.height = '700px';
     userDiv.style.display = 'flex';
     userDiv.style.flexDirection = 'column';
     userDiv.style.margin = '10px';

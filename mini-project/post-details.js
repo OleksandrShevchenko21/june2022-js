@@ -7,7 +7,10 @@ let mainCommentDiv = document.createElement('div');
 
 function showPropsPost(obj) {
         let postDiv = document.createElement('div');
-        postDiv.style.margin = '10px';
+        postDiv.style.background = 'cyan'
+        postDiv.style.borderRadius = '10px';
+        postDiv.style.border = '2px solid darkBlue';
+
 
         for (const i in obj) {
 
@@ -26,31 +29,25 @@ function showPropsPost(obj) {
                 showPropsPost(arr);
             }
         }
+    postDiv.style.margin = '10px';
     }
     showPropsPost(posts)
 
 function showPropsComment(obj) {
     let commentDiv = document.createElement('div');
-    commentDiv.style.background = 'yellow';
-    commentDiv.style.border = '2px solid darkBlue';
-    commentDiv.style.borderRadius = '10px';
-    commentDiv.style.margin = '10px';
-    commentDiv.style.width = '300px';
 
     for (const i in obj) {
 
         if (obj[i].toString() !== '[object Object]') {
 
             let text = document.createElement('h3');
-
-            text.style.width = '200px';
-            text.style.borderRadius = '10px';
-            text.style.padding = '10px';
-
             text.innerText = i + ": " + obj[i];
             commentDiv.appendChild(text);
             mainCommentDiv.appendChild(commentDiv);
 
+            text.style.width = '200px';
+            text.style.borderRadius = '10px';
+            text.style.padding = '10px';
 
         } else {
 
@@ -59,8 +56,14 @@ function showPropsComment(obj) {
             showPropsComment(arr);
         }
     }
-}
 
+    commentDiv.style.background = 'yellow';
+    commentDiv.style.border = '2px solid darkBlue';
+    commentDiv.style.borderRadius = '10px';
+    commentDiv.style.margin = '10px';
+    commentDiv.style.width = '300px';
+
+}
 
 for (let i = 0; i < posts.length; i++) {
 
@@ -77,7 +80,6 @@ for (let i = 0; i < posts.length; i++) {
 
                 localStorage.setItem('posts', JSON.stringify(commentsArray));
 
-
                 showPropsComment(commentsArray);
 
             }));
@@ -87,7 +89,7 @@ document.body.appendChild(mainDiv);
 document.body.appendChild(mainCommentDiv);
 
 
-mainDiv.style.background = 'cyan';
+mainDiv.style.background = 'peachpuff';
 mainDiv.style.width = '1300px';
 mainDiv.style.border = '2px solid darkBlue';
 mainDiv.style.borderRadius = '10px';
